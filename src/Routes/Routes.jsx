@@ -11,7 +11,6 @@ import AllBooks from "../Pages/AllBooks";
 import PrivateProvider from "../Contexts/PrivateProvider";
 import AddBook from "../Pages/AddBook";
 import BorrowedBooks from "../Pages/BorrowedBooks";
-import Categories from "../Components/Categories";
 import CategoryBooks from "../Pages/CategoryBooks";
 
 
