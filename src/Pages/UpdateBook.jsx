@@ -65,7 +65,7 @@ const UpdateBook = () => {
     return (
         <div className="max-w-3xl mx-auto p-6">
             <Helmet>
-                <title>Read Books | Update Book</title>
+                <title>ReadBooks | Update Book</title>
             </Helmet>
             <h2 className="text-2xl font-bold mb-4">Update Book</h2>
             <form onSubmit={handleSubmit} className="space-y-4">

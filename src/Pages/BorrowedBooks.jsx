@@ -37,7 +37,7 @@ const BorrowedBooks = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 mt-10">
             <Helmet>
-                <title>Read Books | Borrowed Books</title>
+                <title>ReadBooks | Borrowed Books</title>
             </Helmet>
             <h2 className="text-3xl font-bold mb-6 text-center">My Borrowed Books</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

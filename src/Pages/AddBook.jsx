@@ -44,7 +44,7 @@ const AddBook = () => {
     return (
         <div className="max-w-4xl mx-auto p-6 mt-10 bg-white rounded-lg shadow-md">
             <Helmet>
-                <title>Read Books | Add Book</title>
+                <title>ReadBooks | Add Book</title>
             </Helmet>
             <h2 className="text-3xl font-bold mb-6 text-center">Add New Book</h2>
 
