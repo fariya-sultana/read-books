@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { Helmet } from 'react-helmet-async';
 
 const AddBook = () => {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ const AddBook = () => {
         e.preventDefault();
         try {
             const res = await axios.post('http://localhost:3000/books', formData);
-            if (res.data.insertedId){
+            if (res.data.insertedId) {
                 toast.success('Book added successfully!');
                 navigate('/');
             } else {
@@ -42,6 +43,9 @@ const AddBook = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-6 mt-10 bg-white rounded-lg shadow-md">
+            <Helmet>
+                <title>Read Books | Add Book</title>
+            </Helmet>
             <h2 className="text-3xl font-bold mb-6 text-center">Add New Book</h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">

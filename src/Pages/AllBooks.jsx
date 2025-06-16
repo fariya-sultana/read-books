@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router';
 
 const AllBooks = () => {
@@ -27,6 +28,9 @@ const AllBooks = () => {
 
     return (
         <div className="p-4 md:max-w-11/12 mx-auto">
+            <Helmet>
+                <title>Read Books | All Books</title>
+            </Helmet>
 
             {/* Filter and view toggles */}
             <div className="flex items-center mb-6 space-x-4">

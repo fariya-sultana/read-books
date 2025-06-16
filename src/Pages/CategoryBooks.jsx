@@ -4,6 +4,7 @@ import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 import { motion } from 'framer-motion';
 import Loading from '../Components/Loading';
+import { Helmet } from 'react-helmet-async';
 
 const CategoryBooks = () => {
     const { name } = useParams();
@@ -20,6 +21,9 @@ const CategoryBooks = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 mt-10">
+            <Helmet>
+                <title>Read Books | All {name} Books</title>
+            </Helmet>
             <h2 className="text-3xl font-bold mb-6 text-center">Category: {name}</h2>
 
             {loading ? (

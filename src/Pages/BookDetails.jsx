@@ -4,6 +4,7 @@ import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Contexts/AuthContext';
+import { Helmet } from 'react-helmet-async';
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -53,12 +54,15 @@ const BookDetails = () => {
             }
         }
     };
-   
+
 
     if (!book) return <div className="text-center mt-10">{loading}</div>;
 
     return (
         <div className="max-w-4xl mx-auto mt-10 p-4 shadow-md bg-white rounded">
+            <Helmet>
+                <title>Read Books | {book.name}</title>
+            </Helmet>
             <div className="flex flex-col md:flex-row gap-6">
                 <img src={book.image} alt={book.name} className="w-full md:w-80 h-[350px] rounded" />
 
