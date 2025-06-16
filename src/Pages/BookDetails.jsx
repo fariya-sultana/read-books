@@ -1,106 +1,117 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { useParams, Navigate } from 'react-router';
+import React, { use, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import StarRatings from 'react-star-ratings';
 import axios from 'axios';
-import ReactStars from 'react-rating-stars-component';
-import Modal from 'react-modal';
-import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../Contexts/AuthContext';
-
-Modal.setAppElement('#root');
 
 const BookDetails = () => {
     const { id } = useParams();
-    const { user } = useContext(AuthContext);
+    const { user, loading } = use(AuthContext); // assuming user object { displayName, email }
+
     const [book, setBook] = useState(null);
-    const [modalOpen, setModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [returnDate, setReturnDate] = useState('');
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get(`http://localhost:3000/books/${id}`)
             .then(res => setBook(res.data))
-            .catch(err => console.error(err))
-            .finally(() => setLoading(false));
+            .catch(err => console.error(err));
     }, [id]);
 
-    const handleBorrow = () => {
+    const handleBorrow = async (e) => {
+        e.preventDefault();
+
         if (!returnDate) {
-            return Swal.fire('Error', 'Choose a return date', 'error');
+            toast.error("Please select a return date.");
+            return;
         }
-        axios.post('http://localhost:3000/borrow', {
-            bookId: id,
-            userEmail: user.email,
-            userName: user.displayName,
-            returnDate
-        })
-            .then(() => {
-                Swal.fire('Success', 'Book borrowed!', 'success');
-                setBook(prev => ({ ...prev, quantity: prev.quantity - 1 }));
-                setModalOpen(false);
-            })
-            .catch(err => Swal.fire('Error', err.message, 'error'));
+
+        try {
+            await axios.post(`http://localhost:3000/borrow/${id}`, {
+                name: user.displayName,
+                email: user.email,
+                returnDate,
+            });
+
+            toast.success("Book borrowed successfully!");
+            setIsModalOpen(false);
+            setBook(prev => ({
+                ...prev,
+                quantity: prev.quantity - 1
+            }));
+        } catch (err) {
+            console.error(err);
+            toast.error("Borrow failed.");
+        }
     };
 
-    if (!user) return <Navigate to="/login" replace />;
-    if (loading) return <p>Loading...</p>;
-    if (!book) return <p>Book not found.</p>;
+    if (!book) return <div className="text-center mt-10">{loading}</div>;
 
     return (
-        <div className="max-w-4xl mx-auto p-6">
-            <div className="flex flex-col md:flex-row gap-8">
-                <img
-                    src={book.image}
-                    alt={book.name}
-                    className="w-full md:w-1/3 object-cover rounded"
-                />
-                <div className="flex-1">
-                    <h2 className="text-4xl font-bold mb-2">{book.name}</h2>
-                    <p className="text-lg text-gray-700">Author: {book.author}</p>
-                    <p className="text-gray-700">Category: {book.category}</p>
-                    <p className="text-gray-700 mb-2">Available: {book.quantity}</p>
-                    <ReactStars
-                        count={5}
-                        value={book.rating}
-                        size={24}
-                        isHalf={true}
-                        edit={false}
-                        activeColor="#ffd700"
-                    />
-                    <p className="mt-4 text-gray-800">{book.description}</p>
+        <div className="max-w-4xl mx-auto mt-10 p-4 shadow-md bg-white rounded">
+            <div className="flex flex-col md:flex-row gap-6">
+                <img src={book.image} alt={book.name} className="w-full md:w-80 h-[350px] rounded" />
+
+                <div className="space-y-3 my-auto">
+                    <h2 className="text-3xl font-bold">{book.name}</h2>
+                    <p><strong>Author:</strong> {book.author}</p>
+                    <p><strong>Category:</strong> {book.category}</p>
+                    <p><strong>Quantity:</strong> {book.quantity}</p>
+                    <div className="flex items-center p-1  ">
+                        <StarRatings
+                            rating={book.rating}
+                            starRatedColor="gold"
+                            numberOfStars={5}
+                            name="rating"
+                            starDimension="24px"
+                            starSpacing="2px"
+                        />
+                    </div>
+                    <p className="text-gray-700 mt-2">{book.description || "No description available."}</p>
+
                     <button
-                        onClick={() => setModalOpen(true)}
-                        disabled={book.quantity < 1}
-                        className="btn btn-primary mt-6"
+                        onClick={() => setIsModalOpen(true)}
+                        disabled={book.quantity === 0}
+                        className={`btn btn-primary mt-4 ${book.quantity === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
-                        {book.quantity > 0 ? 'Borrow Book' : 'Out of Stock'}
+                        {book.quantity === 0 ? 'Not Available' : 'Borrow'}
                     </button>
                 </div>
             </div>
 
-            <Modal
-                isOpen={modalOpen}
-                onRequestClose={() => setModalOpen(false)}
-                className="modal-box w-full max-w-md mx-auto"
-                overlayClassName="modal-overlay bg-black bg-opacity-50 flex justify-center items-center"
-            >
-                <h2 className="text-2xl font-bold mb-4">Borrow "{book.name}"</h2>
-                <form className="space-y-4">
-                    <input type="text" value={user.displayName} disabled className="input w-full" />
-                    <input type="email" value={user.email} disabled className="input w-full" />
-                    <input
-                        type="date"
-                        value={returnDate}
-                        onChange={e => setReturnDate(e.target.value)}
-                        className="input w-full"
-                    />
-                    <button type="button" onClick={handleBorrow} className="btn btn-primary w-full">
-                        Confirm Borrow
-                    </button>
-                </form>
-                <button className="btn btn-ghost mt-4" onClick={() => setModalOpen(false)}>
-                    Cancel
-                </button>
-            </Modal>
+            {/* Modal */}
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                    <div className="bg-white p-6 rounded-lg w-full max-w-md">
+                        <h3 className="text-xl font-semibold mb-4">Borrow Book</h3>
+                        <form onSubmit={handleBorrow} className="space-y-4">
+                            <div>
+                                <label>Name</label>
+                                <input type="text" value={user.displayName} readOnly className="input input-bordered w-full" />
+                            </div>
+                            <div>
+                                <label>Email</label>
+                                <input type="email" value={user.email} readOnly className="input input-bordered w-full" />
+                            </div>
+                            <div>
+                                <label>Return Date</label>
+                                <input
+                                    type="date"
+                                    value={returnDate}
+                                    onChange={e => setReturnDate(e.target.value)}
+                                    required
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+                            <div className="flex justify-between mt-6">
+                                <button type="submit" className="btn btn-success">Confirm Borrow</button>
+                                <button type="button" onClick={() => setIsModalOpen(false)} className="btn btn-ghost">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -12,6 +12,8 @@ import PrivateProvider from "../Contexts/PrivateProvider";
 import AddBook from "../Pages/AddBook";
 import BorrowedBooks from "../Pages/BorrowedBooks";
 import CategoryBooks from "../Pages/CategoryBooks";
+import UpdateBook from "../Pages/UpdateBook";
+import BookDetails from "../Pages/BookDetails";
 
 
 
@@ -40,7 +42,18 @@ const router = createBrowserRouter([
             {
                 path: "/category/:name",
                 Component: CategoryBooks
+            },
+            {
+                path: "updateBook/:bookId",
+                element: <PrivateProvider><UpdateBook /></PrivateProvider>
+            },
+            {
+                path: "/book/:id",
+                element: <PrivateProvider>
+                    <BookDetails />
+                </PrivateProvider>
             }
+
 
         ]
     },

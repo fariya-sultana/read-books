@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useParams, Link } from 'react-router';
 import axios from 'axios';
-import ReactStars from 'react-rating-stars-component';
+import StarRatings from 'react-star-ratings';
 import { motion } from 'framer-motion';
+import Loading from '../Components/Loading';
 
 const CategoryBooks = () => {
     const { name } = useParams();
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
 
     useEffect(() => {
+        setLoading(true);
         axios.get(`http://localhost:3000/books?category=${name}`)
             .then(res => setBooks(res.data))
             .catch(err => console.error(err))
@@ -20,43 +21,53 @@ const CategoryBooks = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 mt-10">
             <h2 className="text-3xl font-bold mb-6 text-center">Category: {name}</h2>
+
             {loading ? (
-                <p className="text-center">Loading books...</p>
+                <Loading></Loading>
             ) : books.length === 0 ? (
                 <p className="text-center text-gray-500">No books found in this category.</p>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {books.map(book => (
                         <motion.div
                             key={book._id}
                             whileHover={{ scale: 1.03 }}
-                            className="bg-white rounded-lg shadow-md p-4 flex flex-col"
+                            className="bg-white rounded-lg shadow-md  flex flex-col card"
                             layout
                         >
                             <img
                                 src={book.image}
                                 alt={book.name}
-                                className="h-48 w-full object-cover rounded"
+                                className="h-80
+                                 rounded"
                             />
-                            <div className="flex-1 mt-4">
+                            <div className="flex-1 mt-4 space-y-1 p-4 card-body">
                                 <h3 className="text-xl font-semibold">{book.name}</h3>
-                                <p className="text-gray-600">Author: {book.author}</p>
-                                <p className="text-gray-600">Qty: {book.quantity}</p>
-                                <ReactStars
-                                    count={5}
-                                    value={book.rating}
-                                    size={24}
-                                    isHalf={true}
-                                    edit={false}
-                                    activeColor="#ffd700"
-                                />
+                                <p className="text-gray-700"><strong>Author:</strong> {book.author}</p>
+                                <p className="text-gray-700"><strong>Category:</strong> {book.category}</p>
+                                <p className="text-gray-700"><strong>Quantity:</strong> {book.quantity}</p>
+
+                                <div className="flex items-center p-1  ">
+                                    <StarRatings
+                                        rating={book.rating}
+                                        starRatedColor="gold"
+                                        numberOfStars={5}
+                                        name="rating"
+                                        starDimension="24px"
+                                        starSpacing="2px"
+                                    />
+                                </div>
+
+
+
+                                <div className='card-actions justify-end'>
+                                    <Link to={`/book/${book._id}`}><button
+                                        className="btn btn-primary mt-4 w-full"
+                                    >
+                                        Details
+                                    </button></Link>
+                                </div>
                             </div>
-                            <button
-                                onClick={() => navigate(`/book/${book._id}`)}
-                                className="btn btn-primary mt-4"
-                            >
-                                Details
-                            </button>
                         </motion.div>
                     ))}
                 </div>
