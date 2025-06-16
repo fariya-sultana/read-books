@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 const Navbar = () => {
 
     const { user, logOut } = use(AuthContext);
-console.log(user)
     const links = <>
         <li className='lg:hover:text-primary'><NavLink to={'/'}>Home</NavLink></li>
         <li className='lg:hover:text-primary' ><NavLink to={'/allBooks'}>All Books</NavLink></li>
