@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import Loading from './Loading';
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
@@ -34,7 +35,7 @@ const Categories = () => {
             </div>
 
             {loading ? (
-                <p className="text-center text-gray-500">Loading categories...</p>
+                <Loading></Loading>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {categories.length > 0 ? (
