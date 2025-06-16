@@ -41,10 +41,19 @@ const BookDetails = () => {
                 quantity: prev.quantity - 1
             }));
         } catch (err) {
-            console.error(err);
-            toast.error("Borrow failed.");
+            console.error('Borrow error:', err);
+
+            // Check if server sent a message
+            const errorMessage = err.response?.data?.message;
+
+            if (errorMessage) {
+                toast.error(errorMessage);
+            } else {
+                toast.error("Failed to borrow book. Please try again.");
+            }
         }
     };
+   
 
     if (!book) return <div className="text-center mt-10">{loading}</div>;
 
