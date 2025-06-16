@@ -39,7 +39,7 @@ const BorrowedBooks = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {borrowed.map(book => (
                     <div key={book._id} className="bg-white p-4 rounded shadow-md">
-                        <img src={book.image} alt={book.title} className="h-60 w-full object-cover rounded" />
+                        <img src={book.image} alt={book.title} className="h-60 w-full object-contain rounded" />
                         <h3 className="text-xl font-semibold mt-3">{book.title || 'Untitled'}</h3>
                         <p><strong>Category:</strong> {book.category}</p>
                         <p><strong>Borrowed:</strong> {new Date(book.borrowedAt).toLocaleDateString()}</p>
