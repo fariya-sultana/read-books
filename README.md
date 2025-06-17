@@ -6,7 +6,7 @@ ReadBooks is a full-stack library management web application designed for a scho
 
 ## 🌍 Live Site
 
-🔗 **Live Site URL**: [https://readbooks-app.netlify.app]()  
+🔗 **Live Site URL**: [https://readbooks-app.netlify.app](https://read-books-app.web.app/)  
 🔗 **Client GitHub Repo**: [github.com/yourusername/readbooks-client](https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-fariya-sultana)  
 🔗 **Server GitHub Repo**: [github.com/yourusername/readbooks-server](https://github.com/Programming-Hero-Web-Course4/b11a11-server-side-fariya-sultana)
 

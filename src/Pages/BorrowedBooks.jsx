@@ -9,8 +9,6 @@ const BorrowedBooks = () => {
     const { user, loading, setLoading } = useContext(AuthContext);
     const [borrowed, setBorrowed] = useState([]);
 
-    console.log('token in the context', user.accessToken)
-
     useEffect(() => {
         if (user?.email) {
             axios.get(`https://read-books-server-two.vercel.app/borrowed?email=${user.email}`, {
