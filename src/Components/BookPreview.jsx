@@ -23,7 +23,7 @@ const BookPreview = () => {
     const [selectedChapter, setSelectedChapter] = useState(null);
 
     return (
-        <div className="max-w-6xl mx-auto px-4 md:pb-10 pb-6">
+        <div className="max-w-6xl mx-auto px-4 md:pb-14 pb-6">
             {/* Section Header */}
             <div className="text-center mb-6">
                 <h1 className="text-3xl font-bold mb-3"> Book Preview</h1>

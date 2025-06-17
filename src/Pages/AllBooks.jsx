@@ -10,7 +10,7 @@ const AllBooks = () => {
 
     // Fetch all books
     useEffect(() => {
-        fetch('http://localhost:3000/books')
+        fetch('https://read-books-server-two.vercel.app/books')
             .then(res => res.json())
             .then(data => setBooks(data))
             .catch(console.error);

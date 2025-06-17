@@ -3,14 +3,21 @@ import axios from 'axios';
 import { AuthContext } from '../Contexts/AuthContext';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import Loading from '../Components/Loading';
 
 const BorrowedBooks = () => {
     const { user, loading, setLoading } = useContext(AuthContext);
     const [borrowed, setBorrowed] = useState([]);
 
+    console.log('token in the context', user.accessToken)
+
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/borrowed?email=${user.email}`)
+            axios.get(`https://read-books-server-two.vercel.app/borrowed?email=${user.email}`, {
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}`
+                }
+            })
                 .then(res => setBorrowed(res.data))
                 .catch(err => console.log(err))
                 .finally(() => setLoading(false));
@@ -19,7 +26,7 @@ const BorrowedBooks = () => {
 
     const handleReturn = async (borrowId) => {
         try {
-            await axios.delete(`http://localhost:3000/return/${borrowId}`);
+            await axios.delete(`https://read-books-server-two.vercel.app/return/${borrowId}`);
             toast.success("Book returned!");
             setBorrowed(prev => prev.filter(b => b._id !== borrowId));
         } catch (error) {
@@ -28,10 +35,10 @@ const BorrowedBooks = () => {
         }
     };
 
-    if (loading) return <p className="text-center mt-10">{loading} </p>;
-
-    if (borrowed.length === 0) {
-        return <p className="text-center text-gray-500 mt-10 min-h-screen">No borrowed books found.</p>;
+    if (!loading && borrowed.length === 0) {
+        return (
+        <div className='min-h-[530px] flex justify-center items-center'><p className="text-center  text-primary text-3xl">No borrowed books found.</p></div>
+    );
     }
 
     return (

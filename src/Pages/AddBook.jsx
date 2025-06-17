@@ -28,7 +28,7 @@ const AddBook = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:3000/books', formData);
+            const res = await axios.post('https://read-books-server-two.vercel.app/books', formData);
             if (res.data.insertedId) {
                 toast.success('Book added successfully!');
                 navigate('/');

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import Loading from '../Components/Loading';
 
 const UpdateBook = () => {
     const { bookId } = useParams();
@@ -15,8 +16,8 @@ const UpdateBook = () => {
         const fetchData = async () => {
             try {
                 const [bookRes, categoryRes] = await Promise.all([
-                    axios.get(`http://localhost:3000/books/${bookId}`),
-                    axios.get(`http://localhost:3000/categories`)
+                    axios.get(`https://read-books-server-two.vercel.app/books/${bookId}`),
+                    axios.get(`https://read-books-server-two.vercel.app/categories`)
                 ]);
 
                 setBookData(bookRes.data);
@@ -50,7 +51,7 @@ const UpdateBook = () => {
         };
 
         try {
-            await axios.put(`http://localhost:3000/books/${bookId}`, payload);
+            await axios.put(`https://read-books-server-two.vercel.app/books/${bookId}`, payload);
             toast.success('Book updated successfully!');
             navigate('/allBooks');
         } catch (err) {
@@ -60,10 +61,10 @@ const UpdateBook = () => {
     };
 
 
-    if (loading || !bookData) return <p className="text-center">Loading...</p>;
+    if (loading || !bookData) return <Loading></Loading>;
 
     return (
-        <div className="max-w-3xl mx-auto p-6">
+        <div className="max-w-3xl mx-auto p-6 min-h-screen">
             <Helmet>
                 <title>ReadBooks | Update Book</title>
             </Helmet>

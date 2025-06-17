@@ -13,14 +13,14 @@ const CategoryBooks = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`http://localhost:3000/books?category=${name}`)
+        axios.get(`https://read-books-server-two.vercel.app/books?category=${name}`)
             .then(res => setBooks(res.data))
             .catch(err => console.error(err))
             .finally(() => setLoading(false));
     }, [name]);
 
     return (
-        <div className="max-w-7xl mx-auto px-4 mt-10">
+        <div className="max-w-7xl mx-auto px-4 mt-10 ">
             <Helmet>
                 <title>ReadBooks | All {name} Books</title>
             </Helmet>
@@ -29,7 +29,7 @@ const CategoryBooks = () => {
             {loading ? (
                 <Loading></Loading>
             ) : books.length === 0 ? (
-                <p className="text-center text-gray-500">No books found in this category.</p>
+                <div className='min-h-[530px] flex justify-center items-center'><p className="text-center  text-primary text-3xl">No books found in this category.</p></div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {books.map(book => (

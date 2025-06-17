@@ -10,7 +10,7 @@ const Categories = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:3000/categories')
+        axios.get('https://read-books-server-two.vercel.app/categories')
             .then(res => {
                 if (Array.isArray(res.data)) {
                     setCategories(res.data);

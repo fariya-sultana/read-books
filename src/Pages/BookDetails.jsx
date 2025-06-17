@@ -15,7 +15,7 @@ const BookDetails = () => {
     const [returnDate, setReturnDate] = useState('');
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/books/${id}`)
+        axios.get(`https://read-books-server-two.vercel.app/books/${id}`)
             .then(res => setBook(res.data))
             .catch(err => console.error(err));
     }, [id]);
@@ -29,7 +29,7 @@ const BookDetails = () => {
         }
 
         try {
-            await axios.post(`http://localhost:3000/borrow/${id}`, {
+            await axios.post(`https://read-books-server-two.vercel.app/borrow/${id}`, {
                 name: user.displayName,
                 email: user.email,
                 returnDate,
@@ -59,7 +59,7 @@ const BookDetails = () => {
     if (!book) return <div className="text-center mt-10">{loading}</div>;
 
     return (
-        <div className="max-w-4xl mx-auto mt-10 p-4 shadow-md bg-white rounded">
+        <div className="max-w-4xl mx-auto mt-10  p-4 shadow-md bg-white rounded ">
             <Helmet>
                 <title>ReadBooks | {book.name}</title>
             </Helmet>
