@@ -33,9 +33,9 @@ const BookPreview = () => {
             </div>
 
             {/* Book Layout */}
-            <div className="flex flex-col md:flex-row gap-6 lg:gap-10 p-6  rounded-lg">
+            <div className="flex flex-col md:flex-row gap-6 lg:gap-10 p-6 ">
                 {/* Book Cover */}
-                <div className="md:w-1/2 w-full  bg-gray-100 p-4 inline-flex items-center">
+                <div className="md:w-1/2 w-full  bg-gray-100 p-4 inline-flex items-center rounded-lg">
                     <img
                         src="https://i.postimg.cc/L61s1GYJ/island.jpg"
                         alt="The Lost Island"
