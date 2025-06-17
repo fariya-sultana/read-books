@@ -31,11 +31,11 @@ const BorrowedBooks = () => {
     if (loading) return <p className="text-center mt-10">{loading} </p>;
 
     if (borrowed.length === 0) {
-        return <p className="text-center text-gray-500 mt-10">No borrowed books found.</p>;
+        return <p className="text-center text-gray-500 mt-10 min-h-screen">No borrowed books found.</p>;
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-4 mt-10">
+        <div className="max-w-7xl mx-auto px-4 mt-10 min-h-screen">
             <Helmet>
                 <title>ReadBooks | Borrowed Books</title>
             </Helmet>
@@ -50,7 +50,7 @@ const BorrowedBooks = () => {
                         <p><strong>Return By:</strong> {book.returnDate}</p>
                         <button
                             onClick={() => handleReturn(book._id)}
-                            className="btn btn-error mt-4 w-full"
+                            className="btn hover:bg-red-800 text-white bg-red-700 mt-4 w-full"
                         >
                             Return
                         </button>

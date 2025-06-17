@@ -10,10 +10,10 @@ const Navbar = () => {
 
     const { user, logOut } = use(AuthContext);
     const links = <>
-        <li className='lg:hover:text-primary'><NavLink to={'/'}>Home</NavLink></li>
-        <li className='lg:hover:text-primary' ><NavLink to={'/allBooks'}>All Books</NavLink></li>
-        <li className='lg:hover:text-primary' ><NavLink to={'/addBook'}>Add Book</NavLink></li>
-        <li className='lg:hover:text-primary' ><NavLink to={'/borrowedBooks'}>Borrowed Books</NavLink></li>
+        <li className='lg:hover:text-red-700'><NavLink to={'/'}>Home</NavLink></li>
+        <li className='lg:hover:text-red-700' ><NavLink to={'/allBooks'}>All Books</NavLink></li>
+        <li className='lg:hover:text-red-700' ><NavLink to={'/addBook'}>Add Book</NavLink></li>
+        <li className='lg:hover:text-red-700' ><NavLink to={'/borrowedBooks'}>Borrowed Books</NavLink></li>
     </>
 
     const handleLogout = () => {

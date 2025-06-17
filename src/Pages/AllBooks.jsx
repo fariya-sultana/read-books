@@ -27,7 +27,7 @@ const AllBooks = () => {
     };
 
     return (
-        <div className="p-4 md:max-w-11/12 mx-auto">
+        <div className="p-4 md:max-w-11/12 mx-auto min-h-screen">
             <Helmet>
                 <title>ReadBooks | All Books</title>
             </Helmet>
