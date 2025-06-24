@@ -119,7 +119,7 @@ src/
 
 1. Clone the project:
 
-git clone 
+git clone https://github.com/fariya-sultana/read-books.git
 
 
 2. Navigate to the project folder:
