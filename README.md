@@ -113,6 +113,42 @@ src/
 
 ---
 
+
+🧪 How to Run Locally
+
+
+1. Clone the project:
+
+git clone 
+
+
+2. Navigate to the project folder:
+
+cd your-repo-name
+
+
+3. Install dependencies:
+
+npm install
+
+
+4. Create a .env file in the root directory and   add your Firebase config:
+
+VITE_apiKey=your_api_key
+VITE_authDomain=your_auth_domain
+VITE_projectId=your_project_id
+VITE_storageBucket=your_storage_bucket
+VITE_messagingSenderId=your_messaging_sender_id
+VITE_appId=your_app_id
+
+
+5. Start the development server:
+
+npm run dev
+
+
+---
+
 👨‍💻 Author
 Name: [Fariya Sultana]
 Email: fariyasultana802@gmail.com
