@@ -49,10 +49,10 @@ const BorrowedBooks = () => {
                 {borrowed.map(book => (
                     <div key={book._id} className="bg-white p-4 rounded shadow-md">
                         <img src={book.image} alt={book.title} className="h-60 w-full object-contain rounded" />
-                        <h3 className="text-xl font-semibold mt-3">{book.title || 'Untitled'}</h3>
-                        <p><strong>Category:</strong> {book.category}</p>
-                        <p><strong>Borrowed:</strong> {new Date(book.borrowedAt).toLocaleDateString()}</p>
-                        <p><strong>Return By:</strong> {book.returnDate}</p>
+                        <h3 className="text-xl font-semibold mt-3 text-black">{book.title || 'Untitled'}</h3>
+                        <p className='text-black'><strong>Category:</strong> {book.category}</p>
+                        <p className='text-black'><strong>Borrowed:</strong> {new Date(book.borrowedAt).toLocaleDateString()}</p>
+                        <p className='text-black'><strong>Return By:</strong> {book.returnDate}</p>
                         <button
                             onClick={() => handleReturn(book._id)}
                             className="btn hover:bg-red-800 text-white bg-red-700 mt-4 w-full"

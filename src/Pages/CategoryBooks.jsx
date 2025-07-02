@@ -46,7 +46,7 @@ const CategoryBooks = () => {
                                  rounded"
                             />
                             <div className="flex-1 mt-4 space-y-1 p-4 card-body">
-                                <h3 className="text-xl font-semibold">{book.name}</h3>
+                                <h3 className="text-xl font-semibold text-black">{book.name}</h3>
                                 <p className="text-gray-700"><strong>Author:</strong> {book.author}</p>
                                 <p className="text-gray-700"><strong>Category:</strong> {book.category}</p>
                                 <p className="text-gray-700"><strong>Quantity:</strong> {book.quantity}</p>

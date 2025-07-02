@@ -30,8 +30,8 @@ const BlogSection = () => {
         <section className="mb-12 md:mb-20 px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900">From Our Blog</h2>
-                    <p className="text-gray-600 mt-3 text-sm md:text-base">Thoughts, insights & bookish musings from our team</p>
+                    <h2 className="text-3xl font-bold ">From Our Blog</h2>
+                    <p className="opacity-70 mt-3 text-sm md:text-base">Thoughts, insights & bookish musings from our team</p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-10">
@@ -46,13 +46,13 @@ const BlogSection = () => {
                                 className="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-105"
                             />
                             <div className="p-5">
-                                <div className="flex items-center text-sm text-gray-500 mb-2">
+                                <div className="flex items-center text-sm opacity-70 mb-2">
                                     <Calendar className="w-4 h-4 mr-1" /> {post.date}
                                 </div>
-                                <h3 className="text-lg font-semibold text-gray-800 leading-snug mb-1 group-hover:text-red-700">
+                                <h3 className="text-lg font-semibold  leading-snug mb-1 group-hover:text-primary">
                                     {post.title}
                                 </h3>
-                                <p className="text-gray-600 text-sm">{post.excerpt}</p>
+                                <p className=" opacity-70 text-sm">{post.excerpt}</p>
                             </div>
                         </div>
                     ))}

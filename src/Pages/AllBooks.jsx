@@ -55,7 +55,7 @@ const AllBooks = () => {
             {viewMode === 'card' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
                     {filteredBooks.map(book => (
-                        <div key={book._id} className="card rounded shadow-xl">
+                        <div key={book._id} className="card rounded shadow-xl bg-white">
                             <figure className='pt-4'>
                                 <img
                                     src={book.image}
@@ -65,7 +65,7 @@ const AllBooks = () => {
                             </figure>
 
                             <div className='card-body'>
-                                <h2 className="text-xl font-semibold">{book.name}</h2>
+                                <h2 className="text-xl font-semibold text-black">{book.name}</h2>
                                 <p className="text-sm text-gray-600">Author: {book.author}</p>
                                 <p className="text-sm text-gray-600">Category: {book.category}</p>
                                 <p className="text-sm text-gray-600">Rating: {book.rating}</p>
@@ -90,7 +90,7 @@ const AllBooks = () => {
                 <div className="w-full overflow-x-auto lg:overflow-visible">
                     <table className="table-auto w-full min-w-[700px] border-collapse border border-gray-300">
                         <thead>
-                            <tr className="bg-gray-100">
+                            <tr className="bg-primary">
                                 <th className="border border-gray-300 px-4 py-2">Cover</th>
                                 <th className="border border-gray-300 px-4 py-2">Title</th>
                                 <th className="border border-gray-300 px-4 py-2">Author</th>

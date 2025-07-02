@@ -42,7 +42,7 @@ const AddBook = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 mt-10 bg-white rounded-lg shadow-md">
+        <div className="max-w-4xl mx-auto p-6 mt-10 rounded-lg shadow-2xl">
             <Helmet>
                 <title>ReadBooks | Add Book</title>
             </Helmet>
@@ -156,7 +156,7 @@ const AddBook = () => {
             {/* Static book content */}
             <div className="mt-10 border-t pt-6">
                 <h3 className="text-xl font-bold mb-2">Why Add a Book?</h3>
-                <p className="text-gray-600">
+                <p className="opacity-70">
                     Help others discover great reads by adding books to our library. Accurate and complete information ensures a better experience for everyone!
                 </p>
             </div>

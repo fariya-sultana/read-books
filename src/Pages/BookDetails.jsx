@@ -67,10 +67,10 @@ const BookDetails = () => {
                 <img src={book.image} alt={book.name} className="w-full md:w-80 h-[350px] rounded" />
 
                 <div className="space-y-3 my-auto">
-                    <h2 className="text-3xl font-bold">{book.name}</h2>
-                    <p><strong>Author:</strong> {book.author}</p>
-                    <p><strong>Category:</strong> {book.category}</p>
-                    <p><strong>Quantity:</strong> {book.quantity}</p>
+                    <h2 className="text-3xl font-bold text-black">{book.name}</h2>
+                    <p className='text-black'><strong>Author:</strong> {book.author}</p>
+                    <p className='text-black'><strong>Category:</strong> {book.category}</p>
+                    <p className='text-black'><strong>Quantity:</strong> {book.quantity}</p>
                     <div className="flex items-center p-1  ">
                         <StarRatings
                             rating={book.rating}
@@ -97,18 +97,18 @@ const BookDetails = () => {
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
                     <div className="bg-white p-6 rounded-lg w-full max-w-md">
-                        <h3 className="text-xl font-semibold mb-4">Borrow Book</h3>
+                        <h3 className="text-xl font-semibold mb-4 text-black">Borrow Book</h3>
                         <form onSubmit={handleBorrow} className="space-y-4">
                             <div>
-                                <label>Name</label>
+                                <label className='text-black'>Name</label>
                                 <input type="text" value={user.displayName} readOnly className="input input-bordered w-full" />
                             </div>
                             <div>
-                                <label>Email</label>
+                                <label className='text-black'>Email</label>
                                 <input type="email" value={user.email} readOnly className="input input-bordered w-full" />
                             </div>
                             <div>
-                                <label>Return Date</label>
+                                <label className='text-black'>Return Date</label>
                                 <input
                                     type="date"
                                     value={returnDate}
@@ -118,8 +118,8 @@ const BookDetails = () => {
                                 />
                             </div>
                             <div className="flex justify-between mt-6">
-                                <button type="submit" className="btn btn-success">Confirm Borrow</button>
-                                <button type="button" onClick={() => setIsModalOpen(false)} className="btn btn-ghost">Cancel</button>
+                                <button type="submit" className="btn btn-primary">Confirm Borrow</button>
+                                <button type="button" onClick={() => setIsModalOpen(false)} className="btn bg-red-600 hover:bg-red-500">Cancel</button>
                             </div>
                         </form>
                     </div>

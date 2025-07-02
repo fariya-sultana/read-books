@@ -27,7 +27,7 @@ const BookPreview = () => {
             {/* Section Header */}
             <div className="text-center mb-6">
                 <h1 className="text-3xl font-bold mb-3"> Book Preview</h1>
-                <p className="text-gray-600 max-w-2xl mx-auto">
+                <p className="opacity-70 max-w-2xl mx-auto">
                     Dive into a glimpse of <strong>"The Lost Island"</strong>, an exciting short novel filled with adventure, mystery, and secrets waiting to be discovered.
                 </p>
             </div>
@@ -46,14 +46,14 @@ const BookPreview = () => {
                 {/* Chapter List & Content */}
                 <div className="md:w-2/3 w-full space-y-4 my-auto">
                     <h2 className="text-2xl font-bold">📖 The Lost Island</h2>
-                    <p className="text-gray-600 mb-4">A short adventure novel</p>
+                    <p className="opacity-70 mb-4">A short adventure novel</p>
 
                     <div className="grid grid-cols-2 gap-3">
                         {chapters.map((chapter, index) => (
                             <button
                                 key={index}
                                 onClick={() => setSelectedChapter(chapter)}
-                                className="p-3 bg-gray-100 hover:bg-gray-200 rounded shadow text-left cursor-pointer"
+                                className="p-3 bg-primary hover:opacity-80 rounded shadow text-left cursor-pointer"
                             >
                                 {chapter.title}
                             </button>
@@ -63,7 +63,7 @@ const BookPreview = () => {
                     {selectedChapter && (
                         <div className="mt-6 border-t pt-4">
                             <h3 className="text-xl font-semibold mb-2">{selectedChapter.title}</h3>
-                            <p className="text-gray-700">{selectedChapter.content}</p>
+                            <p className="opacity-80">{selectedChapter.content}</p>
                         </div>
                     )}
                 </div>

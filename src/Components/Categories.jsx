@@ -29,7 +29,7 @@ const Categories = () => {
         <div className="my-10 md:my-20 max-w-7xl mx-auto px-4">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold">Explore Book Categories</h2>
-                <p className="text-gray-600 mt-2">
+                <p className="opacity-70 mt-2">
                     Browse through different genres and find your next favorite read.
                 </p>
             </div>
@@ -51,7 +51,7 @@ const Categories = () => {
                                     alt={cat.name}
                                     className="w-full h-40 object-cover mb-4 rounded"
                                 />
-                                <h3 className="text-xl font-semibold">{cat.name}</h3>
+                                <h3 className="text-xl font-semibold text-black">{cat.name}</h3>
                             </motion.div>
                         ))
                     ) : (
