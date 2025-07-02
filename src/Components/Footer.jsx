@@ -3,6 +3,8 @@ import { CiTwitter } from 'react-icons/ci';
 import { FaInstagram } from 'react-icons/fa';
 import { FiYoutube } from 'react-icons/fi';
 import { SlSocialFacebook } from 'react-icons/sl';
+import { Link } from 'react-router';
+import logoImg from '../../public/logoicon (2).PNG';
 
 const Footer = () => {
     return (
@@ -10,7 +12,7 @@ const Footer = () => {
             <footer className="footer sm:footer-horizontal text-neutral-content ">
                 <nav className='md:pl-5'>
                     <h2 className='text-xl md:text-3xl inline-flex items-center text-red-800 font-bold'>
-                        <img className='w-8 md:w-12 md:mr-1' src="/public/logoicon (2).PNG" alt="" />ReadBooks
+                        <img className='w-8 md:w-12 md:mr-1' src={logoImg} alt="" />ReadBooks
                     </h2>
 
                     <p>📞 29 Madison Street, LA 20183, Dhaka</p>
@@ -20,32 +22,27 @@ const Footer = () => {
                 </nav>
                 <nav className='md:pl-5'>
                     <h4 className=" font-bold text-lg text-gray-700">Contact Info</h4>
-                    <a className="link link-hover">About Us</a>
-                    <a className="link link-hover">Contact Us</a>
-                    <a className="link link-hover">Our Team</a>
-                    <a className="link link-hover">Book Borrowed</a>
-                    <a className="link link-hover">Visit Location</a>
+                    <Link to={'/aboutUs'} className='link link-hover'>About Us</Link>
+                    <Link to={'/contactUs'} className='link link-hover'>Contact Us</Link>
+                    <Link to={'/allBooks'} className='link link-hover'>All Books</Link>
+
                 </nav>
+
                 <nav className='md:pl-5'>
-                    <h4 className=" font-bold text-lg text-gray-700">Services</h4>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
-                </nav>
-                <nav className='md:pl-5'>
-                    <h4 className=" font-bold text-lg text-gray-700">Terms</h4>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
-                    <a className="link link-hover">Terms Conditions</a>
-                    <a className="link link-hover">Case Studies</a>
+                    <h4 className=" font-bold text-lg text-gray-700">Social Links</h4>
+                    <nav className=" gap-4 flex">
+                        <a href=""><SlSocialFacebook size={20} className='hover:fill-primary' /></a>
+
+                        <a href=""><CiTwitter size={20} className='hover:fill-primary' /></a>
+                        <a href=""><FaInstagram size={20} className='hover:fill-primary' /></a>
+                        <a href=""><FiYoutube size={20} className='hover:fill-primary' /></a>
+                    </nav>
                 </nav>
             </footer>
 
             <hr className='border-gray-600 my-4' />
 
-            <footer className="footer sm:footer-horizontal text-neutral-content items-center pt-4">
+            <footer className="footer sm:footer-horizontal text-neutral-content place-items-center pt-4">
                 <aside className="grid-flow-col items-center">
                     <svg
                         width="36"
@@ -60,13 +57,7 @@ const Footer = () => {
                     </svg>
                     <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
                 </aside>
-                <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-                    <a href=""><SlSocialFacebook size={20} className='hover:fill-primary' /></a>
 
-                    <a href=""><CiTwitter size={20} className='hover:fill-primary' /></a>
-                    <a href=""><FaInstagram size={20} className='hover:fill-primary' /></a>
-                    <a href=""><FiYoutube size={20} className='hover:fill-primary' /></a>
-                </nav>
             </footer>
         </div>
     );

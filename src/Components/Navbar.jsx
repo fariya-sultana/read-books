@@ -4,6 +4,7 @@ import './navbar.css'
 import { FcUnlock } from 'react-icons/fc';
 import { AuthContext } from '../Contexts/AuthContext';
 import Swal from 'sweetalert2';
+import logoImg from '../../public/logoicon (2).PNG';
 
 
 const Navbar = () => {
@@ -11,9 +12,15 @@ const Navbar = () => {
     const { user, logOut } = use(AuthContext);
     const links = <>
         <li className='lg:hover:text-red-700'><NavLink to={'/'}>Home</NavLink></li>
-        <li className='lg:hover:text-red-700' ><NavLink to={'/allBooks'}>All Books</NavLink></li>
-        <li className='lg:hover:text-red-700' ><NavLink to={'/addBook'}>Add Book</NavLink></li>
-        <li className='lg:hover:text-red-700' ><NavLink to={'/borrowedBooks'}>Borrowed Books</NavLink></li>
+        {
+            user && <>
+                <li className='lg:hover:text-red-700' ><NavLink to={'/allBooks'}>All Books</NavLink></li>
+                <li className='lg:hover:text-red-700' ><NavLink to={'/addBook'}>Add Book</NavLink></li>
+                <li className='lg:hover:text-red-700' ><NavLink to={'/borrowedBooks'}>Borrowed Books</NavLink></li>
+            </>
+        }
+        <li className='lg:hover:text-red-700' ><NavLink to={'/aboutUs'}>About Us</NavLink></li>
+        <li className='lg:hover:text-red-700' ><NavLink to={'/contactUs'}>Contact Us</NavLink></li>
     </>
 
     const handleLogout = () => {
@@ -36,9 +43,9 @@ const Navbar = () => {
 
 
     return (
-        <div className='md:max-w-11/12 md:mx-auto '>
+        <div className='bg-base-100 sticky top-0 z-50 '>
 
-            <div className="navbar  bg-base-100 p-4">
+            <div className="navbar md:max-w-11/12 md:mx-auto   p-4">
 
                 <div className="navbar-start">
 
@@ -55,7 +62,7 @@ const Navbar = () => {
 
                     <div className='hidden md:block'>
                         <h2 className=' z-20 text-xl md:text-3xl inline-flex items-center text-red-700 font-semibold'>
-                            <img className='w-8 md:w-12 md:mr-2' src="/public/logoicon (2).PNG" alt="" />Read<span className=''>Books</span>
+                            <img className='w-8 md:w-12 md:mr-2' src={logoImg} alt="" />Read<span className=''>Books</span>
                         </h2>
                     </div>
 

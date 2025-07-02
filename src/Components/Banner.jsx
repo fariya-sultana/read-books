@@ -2,10 +2,11 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
+import { Link } from 'react-router';
 
 const Banner = () => {
     return (
-        <div className="max-w-11/12 mx-auto rounded-2xl overflow-hidden">
+        <div className="max-w-11/12 mx-auto rounded-2xl overflow-hidden lg:h-[70vh] ">
             <Swiper
                 slidesPerView={1}
                 loop={true}
@@ -64,7 +65,9 @@ const Banner = () => {
                             <p className="mb-3 md:mb-5 text-white opacity-90 text-left">
                                 Got a great book? Add it to our collection and share it with fellow readers. Join the growing ReadBooks community and contribute to the joy of reading.
                             </p>
-                            <button className="btn btn-primary text-white">Learn more</button>
+                            <Link to={'/addBook'}>
+                                <button className="btn btn-primary text-white">Learn more</button>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>

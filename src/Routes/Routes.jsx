@@ -14,6 +14,8 @@ import BorrowedBooks from "../Pages/BorrowedBooks";
 import CategoryBooks from "../Pages/CategoryBooks";
 import UpdateBook from "../Pages/UpdateBook";
 import BookDetails from "../Pages/BookDetails";
+import AboutUs from "../Pages/AboutUs";
+import ContactUs from "../Pages/ContactUs";
 
 
 
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
                 element: <PrivateProvider>
                     <BookDetails />
                 </PrivateProvider>
+            },
+            {
+                path: 'aboutUs',
+                Component: AboutUs
+            },
+            {
+                path: 'contactUs',
+                Component: ContactUs
             }
 
 

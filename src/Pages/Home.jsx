@@ -4,6 +4,8 @@ import Banner from '../Components/Banner';
 import Categories from '../Components/Categories';
 import BookPreview from '../Components/BookPreview';
 import SubscribeBox from '../Components/SubscribeBox';
+import PromoSection from '../Components/PromoSection';
+import BlogSection from '../Components/BlogSection';
 
 const Home = () => {
     return (
@@ -14,6 +16,7 @@ const Home = () => {
             <Banner></Banner>
             <Categories></Categories>
             <BookPreview></BookPreview>
+            <BlogSection></BlogSection>
             <SubscribeBox></SubscribeBox>
         </div>
     );
