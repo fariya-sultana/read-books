@@ -24,7 +24,7 @@ const CategoryBooks = () => {
             <Helmet>
                 <title>ReadBooks | All {name} Books</title>
             </Helmet>
-            <h2 className="text-3xl font-bold mb-6 text-center">Category: {name}</h2>
+            <h2 className="text-3xl font-bold mb-6 md:mb-12 text-center">Category: {name}</h2>
 
             {loading ? (
                 <Loading></Loading>
@@ -42,29 +42,14 @@ const CategoryBooks = () => {
                             <img
                                 src={book.image}
                                 alt={book.name}
-                                className="h-80
+                                className="h-50
                                  rounded"
                             />
                             <div className="flex-1 mt-4 space-y-1 p-4 card-body">
                                 <h3 className="text-xl font-semibold text-black">{book.name}</h3>
                                 <p className="text-gray-700"><strong>Author:</strong> {book.author}</p>
-                                <p className="text-gray-700"><strong>Category:</strong> {book.category}</p>
-                                <p className="text-gray-700"><strong>Quantity:</strong> {book.quantity}</p>
 
-                                <div className="flex items-center p-1  ">
-                                    <StarRatings
-                                        rating={book.rating}
-                                        starRatedColor="gold"
-                                        numberOfStars={5}
-                                        name="rating"
-                                        starDimension="24px"
-                                        starSpacing="2px"
-                                    />
-                                </div>
-
-
-
-                                <div className='card-actions justify-end'>
+                                <div className='card-actions'>
                                     <Link to={`/book/${book._id}`}><button
                                         className="btn btn-primary mt-4 w-full"
                                     >

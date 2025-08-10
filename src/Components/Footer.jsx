@@ -31,11 +31,11 @@ const Footer = () => {
                 <nav className='md:pl-5'>
                     <h4 className=" font-bold text-lg text-gray-700">Social Links</h4>
                     <nav className=" gap-4 flex">
-                        <a href=""><SlSocialFacebook size={20} className='' /></a>
+                        <a href="https://www.facebook.com/"><SlSocialFacebook size={20} className='' /></a>
 
-                        <a href=""><CiTwitter size={20} className='' /></a>
-                        <a href=""><FaInstagram size={20} className='' /></a>
-                        <a href=""><FiYoutube size={20} className='' /></a>
+                        <a href="https://twitter.com/"><CiTwitter size={20} className='' /></a>
+                        <a href="https://www.instagram.com/"><FaInstagram size={20} className='' /></a>
+                        <a href="https://www.youtube.com/"><FiYoutube size={20} className='' /></a>
                     </nav>
                 </nav>
             </footer>

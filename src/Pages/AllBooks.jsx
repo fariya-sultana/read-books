@@ -74,7 +74,7 @@ const AllBooks = () => {
                                 <div className='card-actions justify-end '>
                                     <button
                                         onClick={() => handleUpdateClick(book._id)}
-                                        className="btn btn-primary mt-3 "
+                                        className="btn btn-outline text-primary hover:bg-primary mt-3 hover:text-white font-bold"
                                     >
                                         Update
                                     </button>

@@ -59,11 +59,11 @@ const BookDetails = () => {
     if (!book) return <div className="text-center mt-10">{loading}</div>;
 
     return (
-        <div className="max-w-4xl mx-auto mt-10  p-4 shadow-md bg-white rounded ">
+        <div className="max-w-5xl mx-auto mt-10  p-4  bg-white rounded ">
             <Helmet>
                 <title>ReadBooks | {book.name}</title>
             </Helmet>
-            <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex flex-col md:flex-row gap-8 ">
                 <img src={book.image} alt={book.name} className="w-full md:w-80 h-[350px] rounded" />
 
                 <div className="space-y-3 my-auto">
