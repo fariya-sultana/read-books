@@ -27,7 +27,9 @@ const Banner = () => {
                             <p className="mb-3 md:mb-5 text-white opacity-90 text-left">
                                 Dive into an endless library of fiction, non-fiction, self-help, and academic books. Find what moves you and expand your horizons—one page at a time.
                             </p>
-                            <button className="btn btn-primary text-white">Learn more</button>
+                            <Link to={'/aboutUs'}>
+                                <button className="btn btn-primary text-white">Learn more</button>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -46,7 +48,9 @@ const Banner = () => {
                             <p className="mb-3 md:mb-5 text-white opacity-90 text-left">
                                 With our easy-to-use system, you can borrow your favorite books in seconds. Track your borrowed list and never miss a return date.
                             </p>
-                            <button className="btn btn-primary text-white">Learn more</button>
+                            <Link to={'/aboutUs'}>
+                                <button className="btn btn-primary text-white">Learn more</button>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>
