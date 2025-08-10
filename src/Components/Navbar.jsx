@@ -102,14 +102,14 @@ const Navbar = () => {
                         <div className="flex items-center gap-1 md:gap-2">
                             <Link
                                 to={"/login"}
-                                className="btn bg-primary hover:bg-gray-600 text-white font-bold btn-sm"
+                                className="btn btn-outline text-primary hover:bg-primary btn-sm hover:text-white font-bold"
                             >
                                 Login
                             </Link>
 
                             <Link
                                 to={"/register"}
-                                className="btn bg-primary text-white hover:bg-gray-600 btn-sm font-bold"
+                                className="btn btn-outline text-primary hover:bg-primary btn-sm hover:text-white font-bold"
                             >
                                 Register
                             </Link>
